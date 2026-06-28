@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cafejocati.pt"),
   title: "Café Jocati — Duas Igrejas, Penafiel",
   description:
     "O seu café de confiança em Duas Igrejas, Penafiel. Pequeno-almoço, almoços do dia, sandes e petiscos num ambiente acolhedor.",

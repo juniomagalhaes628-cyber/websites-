@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://marciaribeirocabeleireiros.pt"),
   title: "Márcia Ribeiro — Cabeleireiro & Estética | Penafiel",
   description:
     "Salão de cabeleireiro e estética em Penafiel. Cortes, colorações, tratamentos capilares, manicure, pedicure e muito mais. Marque já a sua consulta.",

@@ -3,9 +3,9 @@ export const business = {
   tagline: "Feito com amor, desde o amanhecer",
   description:
     "Uma padaria de tradição em Penafiel, onde o pão sai do forno ainda quente e os pastéis são feitos com receitas de família. O cheiro de pão fresco é o nosso cartão de visita.",
-  address: "Penafiel, Porto",
-  phone: "+351 255 000 111",
-  whatsapp: "+351255000111",
+  address: "Rua do Barreiro, 252, Lugar de Miradouro, 4575-540 Sebolido, Penafiel",
+  phone: "+351 962 473 497",
+  whatsapp: "+351962473497",
   email: "geral@pastelariasebolido.pt",
   hours: [
     { day: "Segunda a Sexta", time: "06:30 – 19:30" },
@@ -19,8 +19,8 @@ export const business = {
   aboutImage:
     "https://images.unsplash.com/photo-1486887396153-fa416526c108?w=900&q=80",
   social: {
-    facebook: "https://www.facebook.com/pastelariasebolido",
-    instagram: "https://www.instagram.com/pastelariasebolido",
+    facebook: "",
+    instagram: "",
   },
   testimonials: [
     {

@@ -19,8 +19,8 @@ export const business = {
   aboutImage:
     "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=900&q=80",
   social: {
-    facebook: "https://www.facebook.com/cafejocati",
-    instagram: "https://www.instagram.com/cafejocati",
+    facebook: "",
+    instagram: "",
   },
   testimonials: [
     {

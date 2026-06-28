@@ -62,12 +62,16 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href={business.social.facebook} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-amber-400 transition-colors" aria-label="Facebook">
-            <FacebookIcon />
-          </a>
-          <a href={business.social.instagram} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-amber-400 transition-colors" aria-label="Instagram">
-            <InstagramIcon />
-          </a>
+          {business.social.facebook && (
+            <a href={business.social.facebook} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-amber-400 transition-colors" aria-label="Facebook">
+              <FacebookIcon />
+            </a>
+          )}
+          {business.social.instagram && (
+            <a href={business.social.instagram} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-amber-400 transition-colors" aria-label="Instagram">
+              <InstagramIcon />
+            </a>
+          )}
           <a
             href="#contacto"
             className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-amber-500 text-black hover:bg-amber-400 transition-colors"

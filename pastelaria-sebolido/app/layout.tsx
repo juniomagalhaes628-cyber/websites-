@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pastelariasebolido.pt"),
   title: "Padaria & Pastelaria Sebolido — Penafiel",
   description:
     "Padaria e pastelaria artesanal em Penafiel. Pão fresco diário, pastéis, bolos e muito mais, feitos com ingredientes de qualidade e receitas tradicionais.",
