@@ -6,6 +6,7 @@ export const business = {
     "Um salão moderno e acolhedor dedicado a realçar a tua beleza natural. Com anos de experiência, a Márcia Ribeiro oferece serviços de cabeleireiro e estética num ambiente relaxante e profissional.",
   address: "Av. José Júlio, Penafiel",
   phone: "+351 255 712 716",
+  whatsapp: "+351255712716",
   email: "marciaribeiro.cabeleireiros@gmail.com",
   hours: [
     { day: "Segunda-Feira", time: "Encerrado" },
@@ -19,7 +20,46 @@ export const business = {
     "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=80",
   aboutImage:
     "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80",
+  social: {
+    facebook: "https://www.facebook.com/marciaribeirocabeleireiros",
+    instagram: "https://www.instagram.com/marciaribeiro.cabeleireiros",
+  },
+  testimonials: [
+    {
+      name: "Catarina S.",
+      rating: 5,
+      text: "A Márcia é simplesmente fantástica! Saí do salão com um corte e cor que adoro.",
+      date: "Mai 2025",
+    },
+    {
+      name: "Inês F.",
+      rating: 5,
+      text: "Excelente serviço, muito profissional. O meu cabelo nunca esteve tão bonito!",
+      date: "Jun 2025",
+    },
+    {
+      name: "Rita A.",
+      rating: 5,
+      text: "Faço aqui as unhas há anos. Trabalho impecável e ambiente super acolhedor.",
+      date: "Jun 2025",
+    },
+  ],
 };
+
+export const team = [
+  {
+    name: "Márcia Ribeiro",
+    role: "Fundadora & Cabeleireira",
+    image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=80",
+    bio: "Mais de 10 anos de experiência em cabeleireiro e estética.",
+  },
+  {
+    name: "Joana Costa",
+    role: "Esteticista",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+    bio: "Especialista em tratamentos faciais e cuidados de beleza.",
+  },
+];
 
 export const services = [
   {

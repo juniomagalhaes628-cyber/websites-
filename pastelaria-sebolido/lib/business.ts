@@ -5,6 +5,7 @@ export const business = {
     "Uma padaria de tradição em Penafiel, onde o pão sai do forno ainda quente e os pastéis são feitos com receitas de família. O cheiro de pão fresco é o nosso cartão de visita.",
   address: "Penafiel, Porto",
   phone: "+351 255 000 111",
+  whatsapp: "+351255000111",
   email: "geral@pastelariasebolido.pt",
   hours: [
     { day: "Segunda a Sexta", time: "06:30 – 19:30" },
@@ -17,6 +18,30 @@ export const business = {
     "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80",
   aboutImage:
     "https://images.unsplash.com/photo-1486887396153-fa416526c108?w=900&q=80",
+  social: {
+    facebook: "https://www.facebook.com/pastelariasebolido",
+    instagram: "https://www.instagram.com/pastelariasebolido",
+  },
+  testimonials: [
+    {
+      name: "Manuel C.",
+      rating: 5,
+      text: "O melhor pão de Penafiel, sem dúvida. Compro aqui há mais de 20 anos!",
+      date: "Mai 2025",
+    },
+    {
+      name: "Filipa R.",
+      rating: 5,
+      text: "Os pastéis de nata são de comer e chorar por mais. Imperdíveis!",
+      date: "Jun 2025",
+    },
+    {
+      name: "Tiago N.",
+      rating: 5,
+      text: "Encomendei o bolo de aniversário da minha filha aqui e ficou perfeito. Muito obrigado!",
+      date: "Jun 2025",
+    },
+  ],
 };
 
 export const products = [

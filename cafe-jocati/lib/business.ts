@@ -5,6 +5,7 @@ export const business = {
     "Um espaço acolhedor onde cada café conta uma história. Desde o pequeno-almoço ao almoço, o Café Jocati é o ponto de encontro da comunidade de Duas Igrejas.",
   address: "Av. Central de Duas Igrejas N 2874, Duas Igrejas, Penafiel",
   phone: "+351 255 000 000",
+  whatsapp: "+351255000000",
   email: "geral@cafejocati.pt",
   hours: [
     { day: "Segunda a Sexta", time: "07:00 – 20:00" },
@@ -17,7 +18,39 @@ export const business = {
     "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1600&q=80",
   aboutImage:
     "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=900&q=80",
+  social: {
+    facebook: "https://www.facebook.com/cafejocati",
+    instagram: "https://www.instagram.com/cafejocati",
+  },
+  testimonials: [
+    {
+      name: "Ana M.",
+      rating: 5,
+      text: "O melhor café de Duas Igrejas! Atendimento fantástico e o prato do dia é uma delícia.",
+      date: "Jan 2025",
+    },
+    {
+      name: "João R.",
+      rating: 5,
+      text: "Venho cá todos os dias tomar o meu café. Preços acessíveis e ambiente acolhedor.",
+      date: "Mar 2025",
+    },
+    {
+      name: "Sofia P.",
+      rating: 5,
+      text: "A tosta mista é incrível! E o galão fica sempre na temperatura perfeita.",
+      date: "Abr 2025",
+    },
+  ],
 };
+
+export const specials = [
+  { day: "Segunda", dish: "Cozido à Portuguesa", price: "8,50 €", desc: "Com chouriço, morcela, grão e couves" },
+  { day: "Terça", dish: "Bacalhau com Natas", price: "9,50 €", desc: "Gratinado no forno com batata" },
+  { day: "Quarta", dish: "Frango Assado", price: "8,00 €", desc: "Com arroz de ervilhas e salada" },
+  { day: "Quinta", dish: "Bife na Frigideira", price: "9,00 €", desc: "Com batata frita e salada" },
+  { day: "Sexta", dish: "Bacalhau à Brás", price: "10,50 €", desc: "Desfiado com ovos e batata palha" },
+];
 
 export const menu = [
   {
