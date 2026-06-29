@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Cake, Gift, Coffee } from "lucide-react";
 import { business } from "@/lib/business";
+import { Card3D } from "@/components/Card3D";
+import { springPop, heroSpring } from "@/lib/animations";
 
 const encomendas = [
   {
@@ -30,10 +32,11 @@ export default function EncomendasSection() {
     <section className="section-padding bg-black">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          custom={0}
+          variants={heroSpring}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 ring-1 ring-yellow-500/20 mb-4">
@@ -42,6 +45,15 @@ export default function EncomendasSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Feito à tua medida
           </h2>
+
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 180, damping: 18 }}
+            className="h-0.5 w-10 bg-yellow-400 origin-center mx-auto mb-4"
+          />
+
           <p className="text-zinc-400 max-w-md mx-auto">
             Bolos e doces personalizados para os momentos que não se esquecem.
           </p>
@@ -55,27 +67,29 @@ export default function EncomendasSection() {
             return (
               <motion.div
                 key={title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                variants={springPop}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-panel rounded-2xl p-7 flex flex-col gap-5"
               >
-                <div className="w-12 h-12 rounded-2xl bg-yellow-500/15 flex items-center justify-center ring-1 ring-yellow-500/20">
-                  <Icon className="w-6 h-6 text-yellow-400" />
-                </div>
-                <div className="flex flex-col gap-2 flex-1">
-                  <h3 className="font-bold text-white text-lg">{title}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{desc}</p>
-                </div>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-yellow-400 text-black text-sm font-semibold hover:bg-yellow-300 transition-colors"
-                >
-                  {cta}
-                </a>
+                <Card3D className="glass-panel-strong rounded-2xl p-7 flex flex-col gap-5 h-full" strength={7}>
+                  <div className="w-12 h-12 rounded-2xl bg-yellow-500/15 flex items-center justify-center ring-1 ring-yellow-500/20">
+                    <Icon className="w-6 h-6 text-yellow-400" />
+                  </div>
+                  <div className="flex flex-col gap-2 flex-1">
+                    <h3 className="font-bold text-white text-lg">{title}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed">{desc}</p>
+                  </div>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-yellow-400 text-black text-sm font-semibold hover:bg-yellow-300 transition-colors"
+                  >
+                    {cta}
+                  </a>
+                </Card3D>
               </motion.div>
             );
           })}

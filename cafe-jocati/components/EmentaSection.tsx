@@ -3,10 +3,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { menu } from "@/lib/business";
+import { fadeUp3D, sectionHeader } from "@/lib/animations";
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { opacity: 0, rotateX: 20, y: 40 },
+  visible: (i: number = 0) => ({
+    opacity: 1, rotateX: 0, y: 0,
+    transition: { duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] as const },
+  }),
   exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
 };
 
@@ -18,10 +22,10 @@ export default function EmentaSection() {
     <section id="ementa" className="section-padding bg-zinc-950">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={sectionHeader}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 ring-1 ring-amber-500/20 mb-4">
@@ -58,15 +62,16 @@ export default function EmentaSection() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 perspective-800"
           >
-            {section.items.map((item) => (
+            {section.items.map((item, i) => (
               <motion.div
                 key={item.name}
+                custom={i}
                 variants={itemVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="glass-panel rounded-xl p-5 hover:bg-white/[0.06] transition-colors"
+                className="glass-panel-strong rounded-xl p-5 hover:bg-white/[0.08] transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
                   <h4 className="font-semibold text-white text-sm">{item.name}</h4>

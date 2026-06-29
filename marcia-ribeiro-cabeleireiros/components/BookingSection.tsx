@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Phone, Calendar, Clock, CheckCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { business, services } from "@/lib/business";
+import { blurReveal, sectionHeader, EASE_MARCIA } from "@/lib/animations";
 
 const steps = [
   { icon: Phone, title: "Liga para nós", desc: "Contacta-nos pelo telefone ou envia uma mensagem." },
@@ -41,10 +42,10 @@ export default function BookingSection() {
     <section id="marcacoes" className="section-padding bg-black">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={sectionHeader}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-rose-500/10 text-rose-400 ring-1 ring-rose-500/20 mb-4">
@@ -53,27 +54,31 @@ export default function BookingSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Marca a tua consulta
           </h2>
+
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: EASE_MARCIA }}
+            className="h-0.5 w-10 bg-rose-500 origin-center mx-auto mb-4"
+          />
+
           <p className="text-zinc-400 max-w-md mx-auto">
             Reserva o teu lugar com antecedência e garante o horário ideal para ti.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {steps.map(({ icon: Icon, title, desc }, i) => (
               <motion.div
                 key={title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                variants={blurReveal}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="glass-panel rounded-xl p-5"
+                className="glass-panel-strong rounded-xl p-5"
               >
                 <div className="w-9 h-9 rounded-full bg-rose-500/15 flex items-center justify-center mb-3">
                   <Icon className="w-4 h-4 text-rose-400" />
@@ -83,21 +88,27 @@ export default function BookingSection() {
               </motion.div>
             ))}
 
-            <div className="sm:col-span-2 glass-panel rounded-xl p-5">
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: EASE_MARCIA }}
+              className="sm:col-span-2 glass-panel-strong rounded-xl p-5"
+            >
               <p className="text-zinc-400 text-xs leading-relaxed">
                 <span className="text-white font-medium">Horário de atendimento:</span>
                 <br />Terça a Sexta · 09:00 – 19:00
                 <br />Sábado · 09:00 – 17:00
               </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 24, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass-panel rounded-2xl p-8"
+            transition={{ duration: 0.6, delay: 0.2, ease: EASE_MARCIA }}
+            className="glass-panel-strong rounded-2xl p-8"
           >
             <h3 className="text-xl font-bold text-white mb-6">Preenche o formulário</h3>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -183,7 +194,7 @@ export default function BookingSection() {
 
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-rose-500 text-white font-semibold hover:bg-rose-400 transition-colors text-sm"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-rose-500 text-white font-semibold hover:bg-rose-400 transition-colors text-sm shadow-[0_4px_24px_rgba(244,63,94,0.3)]"
               >
                 <Send className="w-4 h-4" />
                 Enviar via WhatsApp

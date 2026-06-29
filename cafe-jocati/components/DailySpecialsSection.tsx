@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { UtensilsCrossed } from "lucide-react";
 import { specials } from "@/lib/business";
+import { fadeUp3D, sectionHeader } from "@/lib/animations";
 
 const days = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
 
@@ -13,10 +14,10 @@ export default function DailySpecialsSection() {
     <section className="section-padding bg-black">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={sectionHeader}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 ring-1 ring-amber-500/20 mb-4">
@@ -31,20 +32,21 @@ export default function DailySpecialsSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 perspective-800">
           {specials.map((s, i) => {
             const isToday = s.day === today;
             return (
               <motion.div
                 key={s.day}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                variants={fadeUp3D}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
                 className={`relative rounded-2xl p-5 flex flex-col gap-3 ${
                   isToday
                     ? "bg-amber-500/10 ring-1 ring-amber-500/40"
-                    : "glass-panel"
+                    : "glass-panel-strong"
                 }`}
               >
                 {isToday && (

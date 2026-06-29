@@ -3,11 +3,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { products } from "@/lib/business";
+import { heroSpring } from "@/lib/animations";
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
+  hidden: { opacity: 0, scale: 0.75, rotateZ: -2 },
+  visible: (i: number = 0) => ({
+    opacity: 1, scale: 1, rotateZ: 0,
+    transition: { delay: i * 0.06, type: "spring" as const, stiffness: 180, damping: 18 },
+  }),
+  exit: { opacity: 0, scale: 0.9, transition: { duration: 0.15 } },
 };
 
 export default function ProductsSection() {
@@ -18,10 +22,11 @@ export default function ProductsSection() {
     <section id="produtos" className="section-padding bg-zinc-950">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          custom={0}
+          variants={heroSpring}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 ring-1 ring-yellow-500/20 mb-4">
@@ -30,6 +35,15 @@ export default function ProductsSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Feito diariamente com tradição
           </h2>
+
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 180, damping: 18 }}
+            className="h-0.5 w-10 bg-yellow-400 origin-center mx-auto mb-4"
+          />
+
           <p className="text-zinc-400 max-w-md mx-auto">
             Cada produto é preparado com cuidado, ingredientes frescos e receitas que passam de geração em geração.
           </p>
@@ -58,15 +72,16 @@ export default function ProductsSection() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
-            {section.items.map((item) => (
+            {section.items.map((item, i) => (
               <motion.div
                 key={item.name}
+                custom={i}
                 variants={itemVariants}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="glass-panel rounded-xl p-5 hover:bg-white/[0.06] transition-colors"
+                whileHover={{ y: -4, scale: 1.02, transition: { duration: 0.2 } }}
+                className="glass-panel-strong rounded-xl p-5 hover:bg-white/[0.08] transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
                   <h4 className="font-semibold text-white text-sm">{item.name}</h4>
